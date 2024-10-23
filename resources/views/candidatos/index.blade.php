@@ -45,13 +45,24 @@
                             -->
                             <button  type="submit" class="bg-black text-white rounded-sm w-96 mt-4 h-16 border  hover:bg-gray-200 hover:text-black transition-all">Registrar candidato</button>
                         </div>
+                        
+                        <div class="w-full mt-8">
+                            @if ($candidatoGanador && $candidatoGanador->votos_count > 0) 
+                            <p class="w-full text-left text-xl">El candidato ganador actual: <span class="uppercase font-bold">{{ $candidatoGanador->apellido_candidato }} {{$candidatoGanador->nombre_candidato}}</span> con {{ $candidatoGanador->votos_count }} votos.</p>
+                        
+                            @else
+                                <p class="w-full text-left">Aun no hay votos.</p>
+                            @endif
+                        </div>
 
                         <div class="mt-8">
                             <p class="mb-4">Candidatos registrados</p>
                             @foreach ($candidato as $candidatos)
                             <ul>
                                 <li class="capitalize">{{$candidatos->apellido_candidato}} {{$candidatos->nombre_candidato}}</li>
-                                <li class="mb-4 font-bold capitalize">{{$candidatos->partido_candidato}}</li>
+                                <li class="font-bold capitalize">{{$candidatos->partido_candidato}}</li>
+                                <li class="mb-4 capitalize">Votos obtenido: <span class="font-bold">{{$candidatos->votos_count}}</span></li>
+                                
                             </ul>
                             @endforeach
                             

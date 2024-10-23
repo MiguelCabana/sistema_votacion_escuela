@@ -25,12 +25,7 @@
 
                         <p>Lista de candidatos <span class="text-black font-bold">2024</span></p>
 
-                        @if ($candidatoGanador && $candidatoGanador->votos_count > 0) 
-                        <p class="w-full text-left">El candidato ganador actual: <span class="uppercase font-bold">{{ $candidatoGanador->apellido_candidato }} {{$candidatoGanador->nombre_candidato}}</span> con {{ $candidatoGanador->votos_count }} votos.</p>
-                    
-                    @else
-                        <p class="w-full text-left">Aun no hay votos.</p>
-                    @endif
+
 
                     </div>
                     
@@ -44,7 +39,7 @@
                         <label for="" class="w-full mb-4 capitalize">{{$candidato->partido_candidato}}</label>
                         <label class="w-full mb-4 text-1xl font-bold uppercase" for="">{{$candidato->apellido_candidato}} {{$candidato->nombre_candidato}}</label>
                         <img class="w-40 h-40 mx-auto my-8 " src="https://www.mercadonegro.pe/wp-content/uploads/2020/01/congreso-2020-alianza-para-el-progreso-1024x1024.png" alt="" srcset="">
-                        <label for="" class="w-full flex items-center justify-between">Total de votos: <span class="font-bold text-3xl">{{ $candidato->votos_count }}</span></label>
+
                         <button  class="botonvotar w-full mt-4 h-16 border rounded-sm  bg-black text-white hover:bg-gray-200 hover:text-black transition-all" type="submit">Votar</button>
                    </form>
                    @endforeach

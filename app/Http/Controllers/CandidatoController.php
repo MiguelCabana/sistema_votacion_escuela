@@ -7,19 +7,26 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 class CandidatoController extends Controller
+
 {
     /**
      * Display a listing of the resource.
      */
+
+     use AuthorizesRequests;
     public function index(): View
     {
         //
 
+        $candidato = candidato::withCount('votos')->orderByDesc('votos_count')->get();
+        $candidatoGanador = $candidato->first();
 
-        $candidato = candidato::all();
+        $this->authorize('create', Candidato::class);
 
-        return view('candidatos.index', compact('candidato'));
+        return view('candidatos.index', compact('candidato','candidatoGanador'));
     }
 
     /**
@@ -28,6 +35,8 @@ class CandidatoController extends Controller
     public function create()
     {
         //
+        
+
     }
 
     /**
@@ -35,6 +44,7 @@ class CandidatoController extends Controller
      */
     public function store(Request $request):RedirectResponse     
     {
+        
         //
        $validated = $request->validate([
             'apellido_candidato' => 'required|string|max:255',
