@@ -3,6 +3,7 @@
 use App\Http\Controllers\CandidatoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VotoController;
+use App\Http\Controllers\DescripcionCandidatoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +25,10 @@ Route::resource('candidatos', CandidatoController::class)
     ->middleware(['auth', 'verified']);
 
 Route::resource('votos',VotoController::class)
+    ->only(['index','store'])
+    ->middleware(['auth', 'verified']);
+
+Route::resource('descripcion', DescripcionCandidatoController::class)
     ->only(['index','store'])
     ->middleware(['auth', 'verified']);
 

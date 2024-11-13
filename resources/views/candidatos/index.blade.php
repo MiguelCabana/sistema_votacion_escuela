@@ -8,7 +8,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class=" p-6 text-gray-900">
                     <div>
                         @if (session('success'))
@@ -43,7 +43,7 @@
                                 <option value="3">Fonabi</option>
                             </select>
                             -->
-                            <button  type="submit" class="bg-black text-white rounded-sm w-96 mt-4 h-16 border  hover:bg-gray-200 hover:text-black transition-all">Registrar candidato</button>
+                            <button  type="submit" style="background-image: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);" class=" text-white rounded-sm w-96 mt-4 h-16 border   uppercase transition-all">Registrar candidato</button>
                         </div>
                         
                         <div class="w-full mt-8">

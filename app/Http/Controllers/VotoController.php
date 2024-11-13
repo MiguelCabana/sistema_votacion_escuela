@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+
 class VotoController extends Controller
 {
     /**
@@ -17,12 +18,34 @@ class VotoController extends Controller
     {
         //
 
-   
+
+        $search_candidato = null;
+
+        $user_current = auth()->user();
+        $user_current_id = $user_current->id;
+
+        $user_voto_current = Voto::where('user_id',$user_current_id)->count();
+
         $candidatos = Candidato::withCount('votos')->orderByDesc('votos_count')->get();
+
         $candidatoGanador = $candidatos->first();
 
+        $user_get_voto = Voto::where('user_id',$user_current_id)->first();
 
-        return view('votos.index', compact('candidatos','candidatoGanador'));
+
+        if($user_get_voto) {
+
+            $get_candidato = $user_get_voto->candidato_id;
+            $search_candidato_get = Candidato::where('id',$get_candidato)->get();
+
+            $search_candidato = $search_candidato_get;
+            
+        }
+
+        
+
+
+        return view('votos.index', compact('candidatos','candidatoGanador','user_voto_current','search_candidato'));
 
     }
 
